@@ -1,0 +1,19 @@
+$theme-colors: (
+  'primary': #145bea,
+  'secondary': #833bec,
+  'secondary-800': #9e71e0,
+  'secondary-600': #ab88e0,
+  'secondary-400': #b9a1df,
+  'secondary-200': #d8d4df,
+  'secondary-100': #e7e2f3,
+  'success': #1ce1ac,
+  'info': #ff7d50,
+  'warning': #ffbe0b,
+  'danger': #ff0055,
+  'light': #fafafa,
+  'dark': #001738,
+  'white': #fff,
+  'overlay': rgba(0, 0, 0, 0.25)
+  );
+
+@import '/node_modules/bootstrap/scss/bootstrap.scss';

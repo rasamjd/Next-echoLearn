@@ -9,14 +9,37 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@types/node": "20.5.2",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.14.3",
+    "@reduxjs/toolkit": "^1.9.5",
+    "@types/node": "^20.5.2",
     "@types/react": "18.2.20",
     "@types/react-dom": "18.2.7",
+    "bcryptjs": "^2.4.3",
+    "bootstrap": "^5.3.1",
+    "bootstrap-icons": "^1.10.5",
+    "dotenv": "^16.3.1",
     "eslint": "8.47.0",
     "eslint-config-next": "13.4.19",
+    "mongodb": "^5.8.0",
+    "mongoose": "^7.5.2",
     "next": "13.4.19",
+    "next-auth": "^4.23.1",
+    "node-sass": "^9.0.0",
     "react": "18.2.0",
+    "react-bootstrap": "^2.8.0",
     "react-dom": "18.2.0",
-    "typescript": "5.1.6"
+    "react-icons": "^4.10.1",
+    "react-modal": "^3.16.1",
+    "react-redux": "^8.1.2",
+    "sass": "^1.66.1",
+    "styled-components": "^6.0.7"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.4",
+    "@types/mongodb": "^4.0.7",
+    "@types/react-modal": "^3.16.0",
+    "typescript": "^5.2.2"
   }
 }
