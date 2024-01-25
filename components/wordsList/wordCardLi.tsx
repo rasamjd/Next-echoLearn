@@ -8,14 +8,15 @@ const returnColor = (item: string) => {
     case "Tags": return "warning"
     case "Synonyms": return "success"
     case "Antonyms": return "danger"
+    case "Definitions": return "secondary"
   }
 }
 
 export default function WordCardLi({ arr, itemName }: IProps) {
   return (
-    <>
+    <div>
       <small>{itemName}:</small>
-      <li className="list-group-item p-0 justify-content-end d-flex border-0 bg-transparent">
+      <li className="list-group-item p-0 justify-content-end border-0">
 
       {
           arr.length && arr.map((item) => 
@@ -28,6 +29,6 @@ export default function WordCardLi({ arr, itemName }: IProps) {
       }
       </li>
       <hr className="my-2"/>
-    </>
+    </div>
   )
 }

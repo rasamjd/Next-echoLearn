@@ -13,7 +13,8 @@ $theme-colors: (
   'light': #fafafa,
   'dark': #001738,
   'white': #fff,
-  'overlay': rgba(0, 0, 0, 0.25)
+  'overlay': rgba(0, 0, 0, 0.25),
+  'gray': #e4e4e4,
   );
 
 @import '/node_modules/bootstrap/scss/bootstrap.scss';

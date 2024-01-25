@@ -39,7 +39,7 @@ export default function addModal({ handleCloseModal }: IProps) {
       } else {
         setStatus("Created successfuly!")
 
-        axios.post("/api/projects", { username: sessionData?.user.username, title, language }, { headers: {"Content-Type": "application/json"} })
+        axios.post("/api/setProjects", { username: sessionData?.user.username, title, language }, { headers: {"Content-Type": "application/json"} })
         .then((res) => {
           console.log(res.data)
           setStatus(res.data.message)

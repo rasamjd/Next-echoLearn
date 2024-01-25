@@ -1,28 +1,29 @@
 import { useState } from "react"
+import { useRouter } from "next/router";
 import styled from "@emotion/styled"
 import axios from "axios";
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/router";
 
 interface IProps {
-  handleCloseModal: (modalOpen: boolean) => void
+  handleCloseModal: (modalOpen: boolean) => void,
+  handleCardsChange: () => void
 }
 
-export default function addModal({ handleCloseModal }: IProps) {
+export default function AddModal({ handleCloseModal, handleCardsChange }: IProps) {
 
   const [formData, setFormData] = useState({
     word: "",
     definition1: "", definition2: "", definition3: "",
     tag1: "", tag2: "", tag3: "",
     synonym1: "", synonym2: "", synonym3: "",
-    atnonym1: "", atnonym2: "", atnonym3: "",
+    antonym1: "", antonym2: "", antonym3: "",
     description: "",
   })
   const [language, setLanguage] = useState("default") //////////////////////////// this has to be fixed!
   const [status, setStatus] = useState("")
 
   const router = useRouter()
-  const project = router.query.projects
+  const project = router.query.project
 
   const { data: sessionData } = useSession();
 
@@ -58,11 +59,11 @@ export default function addModal({ handleCloseModal }: IProps) {
     
     const allDefinitions = combineStrings(formData.definition1, formData.definition2, formData.definition3)
     const allSynonyms = combineStrings(formData.synonym1, formData.synonym2, formData.synonym3)
-    const allAntonyms = combineStrings(formData.atnonym1, formData.atnonym2, formData.atnonym3)
+    const allAntonyms = combineStrings(formData.antonym1, formData.antonym2, formData.antonym3)
     const allTags = combineStrings(formData.tag1, formData.tag2, formData.tag3)
 
-    axios.post("/api/words", { 
-      username: sessionData?.user.username,
+    axios.post("/api/setWords", { 
+      username: sessionData?.user?.username,
       project,
       word: formData.word,
       language,
@@ -76,6 +77,7 @@ export default function addModal({ handleCloseModal }: IProps) {
       console.log(res.data)
       setStatus(res.data.message)
       handleCloseModal(false)
+      handleCardsChange()
     })
     .catch((error) => console.log(">>> Error :" + error))
     console.log("Ok!")     
@@ -135,16 +137,20 @@ export default function addModal({ handleCloseModal }: IProps) {
                     <input type="text" className="form-control my-1" id="antonym1" onChange={handleInputChange} placeholder="first antonym" />
                   </div>
                   <div>
-                    <input type="text" className="form-control my-1" id="antonym2" onChange={handleInputChange} disabled={!Boolean(formData.atnonym1.length)} placeholder="second antonym" />
+                    <input type="text" className="form-control my-1" id="antonym2" onChange={handleInputChange} disabled={!Boolean(formData.antonym1.length)} placeholder="second antonym" />
                   </div>
                   <div>
-                    <input type="text" className="form-control my-1" id="antonym3" onChange={handleInputChange} disabled={!Boolean(formData.atnonym2.length)} placeholder="third antonym" />
+                    <input type="text" className="form-control my-1" id="antonym3" onChange={handleInputChange} disabled={!Boolean(formData.antonym2.length)} placeholder="third antonym" />
                   </div>
                 </div>
                 <div className="form-group my-0 col-12 col-sm-6 col-md-4 my-2">
                   <label htmlFor="description" className="badge bg-info">Description:</label>
                   <div>
-                    <textarea className="form-control my-1" id="description" rows={4} maxLength={200}></textarea>
+                    <textarea className="form-control my-1" 
+                              id="description" 
+                              onChange={handleInputChange} 
+                              rows={4} 
+                              maxLength={200}></textarea>
                   </div>
                 </div>
                 {

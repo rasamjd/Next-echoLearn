@@ -6,10 +6,11 @@ import AddModal from "@/components/wordsList/addModal";
 import Modal from "react-modal"
 
 interface IProps {
-  changeCardStyle: () => void
+  changeCardStyle: () => void,
+  handleCardsChange: () => void
 }
 
-export default function WordsHeader({ changeCardStyle }: IProps) {
+export default function WordsHeader({ changeCardStyle, handleCardsChange }: IProps) {
 
   const [modalOpen, setModalOpen] = useState(false)
 
@@ -56,7 +57,7 @@ export default function WordsHeader({ changeCardStyle }: IProps) {
           }
         }}
       >
-        <AddModal handleCloseModal={setModalOpen}/>
+        <AddModal handleCloseModal={setModalOpen} handleCardsChange={handleCardsChange}/>
       </Modal>
     </div>
   )
