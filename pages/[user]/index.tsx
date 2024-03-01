@@ -62,7 +62,7 @@ export default function Index() {
                           {
                             projects.projects.map((project) => {
                               if(project.username == user) {
-                                return <ProjectCard project={project}/>
+                                return <ProjectCard project={project} key={0}/>
                               }
                             })
                           }

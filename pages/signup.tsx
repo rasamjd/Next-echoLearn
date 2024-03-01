@@ -61,6 +61,7 @@ export default function Signup() {
             .then((res) => {
               console.log(res.data)
               setStatus(res.data.message)
+              Router.replace('/login')
             })
             .catch((error) => console.log(">>> Error :" + error))
           console.log("Ok!")

@@ -24,7 +24,7 @@ export default NextAuth({
         if (!user) return null         
         if (!isValid) return null
 
-        return user;
+        return user.username;
       }
     })
   ],
@@ -35,11 +35,11 @@ export default NextAuth({
     secret: process.env.NEXTAUTH_SECRET,
   },
   callbacks: {
-    async jwt({ token, account, profile, user, session }) {
+    async jwt({ token, user }) {
       if (user) {
         return {
           ...token,
-          username: user.username
+          username: user
         }
       }
       return token

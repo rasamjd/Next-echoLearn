@@ -7,7 +7,7 @@ interface IProps {
   handleCloseModal: (modalOpen: boolean) => void
 }
 
-export default function addModal({ handleCloseModal }: IProps) {
+export default function AddModal({ handleCloseModal }: IProps) {
 
   const [status, setStatus] = useState("")
   const [title, setTitle] = useState("")

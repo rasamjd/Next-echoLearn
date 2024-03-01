@@ -20,10 +20,12 @@ export default function WordCardLi({ arr, itemName }: IProps) {
 
       {
           arr.length && arr.map((item) => 
-              <span className={`
+              <span className= {`
                 badge mx-1 bg-${returnColor(itemName)} 
-                text-${itemName === "Tags" ? "dark" : "light"}`}>
-                  {item}
+                text-${itemName === "Tags" ? "dark" : "light"}`}
+                key={0}
+              >
+                {item}
               </span>
           )
       }

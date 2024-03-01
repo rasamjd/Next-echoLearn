@@ -10,7 +10,6 @@ import { KeyboardTabRounded } from '@mui/icons-material';
 import { ReplayRounded } from '@mui/icons-material';
 import { useAppDispatch, useAppSelector } from "@/app/redux/hooks";
 import { fetchWords } from "@/app/redux/features/words";
-import { IWord } from "@/app/entities/Word";
 import { IWordsState } from "@/app/redux/features/words"; 
 
 export default function Project() {
@@ -74,13 +73,13 @@ export default function Project() {
                             bigCards ?
                               words.words.map((word) => {
                                 if(word.project == projectTitle && word.username == user) {
-                                  return <WordCardBig word={word} handleCardsChange={handleCardsChange}/>
+                                  return <WordCardBig word={word} handleCardsChange={handleCardsChange} key={0}/>
                                 }
                               })
                               :
                               words.words.map((word) => {
                                 if(word.project == projectTitle && word.username == user) {
-                                  return <WordCardSmall word={word} />
+                                  return <WordCardSmall word={word} key={0}/>
                                 }
                               })
                           }

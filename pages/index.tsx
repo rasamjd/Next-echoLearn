@@ -24,7 +24,7 @@ export default function Index() {
           <div className="card card-light mt-3 rounded shadow d-inline-block">
             <div className='card-body'>    
               <p className='h4'>Welcome to <span className='text-secondary'>EchoLearn</span>!</p>
-              We've tried to make an environment so that you can practice 
+              EchoLearn is an environment, in which you can practice 
               and expand your knowledge in all of the supported languages.  <br />
               <ul>
                 <li>You can make new projects and define lists of all the new words you want to learn,</li>

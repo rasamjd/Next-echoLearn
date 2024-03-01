@@ -3,6 +3,7 @@ import Link from 'next/link'
 import styled from "styled-components";
 import { signOut, useSession } from "next-auth/react";
 import Modal from 'react-modal';
+import { useRouter } from 'next/router';
 import { LogoutRounded, LoginRounded } from '@mui/icons-material';
 
 export default function Navbar() {
@@ -10,6 +11,9 @@ export default function Navbar() {
   const [modalOpen, setModalOpen] = useState(false)
 
   const { status: sessionStatus, data: sessionData } = useSession();
+
+  const router = useRouter()
+  const user = router.query.user
 
   const handleSignOut = async () => {
     await signOut()
@@ -23,20 +27,26 @@ export default function Navbar() {
           <p className='h2 text-secondary'>EchoLearn</p>
           { 
             sessionStatus === "authenticated" &&
-            <span> Wellcome, { sessionData?.user?.username }! </span>
+            <span> Welcome, { sessionData?.user.username }! </span>
           }
         </div>
         { 
           sessionStatus != "authenticated" ?
-            <Link href={"/signup"} className='btn btn-secondary'>
+            <Link href={"/login"} className='btn btn-secondary'>
               Login &nbsp;
               <LoginRounded />
             </Link>
             :
-            <button className='btn btn-secondary' onClick={() => setModalOpen(true)}>
-              Sign out &nbsp;
-              <LogoutRounded />
-            </button> 
+            <div>
+              {
+              !user ?
+                <button className='btn btn-secondary' onClick={() => setModalOpen(true)}>
+                  Sign out &nbsp;
+                  <LogoutRounded />
+                </button>
+                : null
+              }
+            </div>
         }
       </nav>
       <Modal

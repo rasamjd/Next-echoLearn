@@ -90,7 +90,7 @@ export default function Login() {
                     <div className="form-group">
                       <div className="align-text-bottom d-flex justify-content-between">
                         <span className='align-text-bottom py-2'>
-                          <Link href="signup" className='text-secondary'>Don't have an account?</Link>
+                          <Link href="signup" className='text-secondary'>Don&apos;t have an account?</Link>
                         </span>
                         <button type="submit" className="btn btn-secondary r-0">Log in</button>
                       </div>
